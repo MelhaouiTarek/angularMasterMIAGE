@@ -1,8 +1,7 @@
-<app-add-assignement 
-(nouvelAssignment) = "onNewAssignment($event)"
-*ngIf="forVisible" 
-
-></app-add-assignement>
+<app-add-assignment *ngIf="forVisible"
+                    (nouvelAssignment)="onNewAssignment($event)"
+>
+</app-add-assignment>
 
 <!--
    <h1 *ngIf="assignmentSelectionne">Assignment cliqué : {{assignmentSelectionne.nom}}</h1>

@@ -9,9 +9,8 @@ import { Assignment } from './assignment.model';
 export class AssignmentsComponent implements OnInit {
   titre = "Liste des assignments";
   couleur = "violet";
-  // pour le formulaire
-  nomAssignment:string = "";
-  dateDeRendu?:Date = undefined;
+  // pour cacher le formulaire
+  forVisible=false;
   assignmentSelectionne?:Assignment = undefined;
 
   assignments:Assignment[] = [
@@ -38,21 +37,16 @@ export class AssignmentsComponent implements OnInit {
     console.log("AVANT AFFICHAGE");
   }
 
-  onSubmit() {
-    console.log(this.dateDeRendu);
-
-    if(this.nomAssignment && this.dateDeRendu) {
-      let nouvelAssignment = new Assignment();
-
-      nouvelAssignment.nom = this.nomAssignment;
-      nouvelAssignment.dateDeRendu = this.dateDeRendu;
-      nouvelAssignment.rendu = false;
-
-      this.assignments.push(nouvelAssignment);
-    }
-  }
-
   assignmentClique(assignment:Assignment) {
     this.assignmentSelectionne = assignment;
   }
+  onAddAssignment()
+  {
+    this.forVisible = true;
+  }
+ 
+  onNewAssignment ( assignment:Assignment)
+{
+  this.assignments.push(assignment);
+}
 }
